@@ -1,0 +1,97 @@
+{
+  "_doc": "The measured table as a machine-readable artifact — the app renders ONLY from files like this one, receipts/, or live probes. Every number here was measured on the M4 Max lane; provenance in docs/mac-lane.md. Update alongside pitches, never by hand-waving.",
+  "host": {
+    "wire_budget_gb": { "value": 56, "tag": "measured", "source": "pitch 10 — macOS user-wire ceiling probed" },
+    "bw_effective_gbs": { "value": 49, "tag": "measured", "source": "pitch 10 — q8 kernels, settled cache" },
+    "stream_cold_gbs": { "value": 7.0, "tag": "measured", "source": "pitch 22 probe — pread x4, 468 GB laboratory" },
+    "q4_kernel_gbs_8t": { "value": 32.8, "tag": "measured", "source": "pitch 23 microbench, expert shape 2048x7168" }
+  },
+  "models": [
+    {
+      "container": "tinyllama-1.1b-chat-f32.vm3c",
+      "name": "TinyLlama-1.1B",
+      "family": "dense · GQA · the first witness",
+      "meta_dir": "TinyLlama-1.1B-Chat-v1.0",
+      "golden": "74f5fd",
+      "receipt": "receipts/tinyllama-74f5fd.signed.json",
+      "prompt": "receipts/real-prompt.txt",
+      "eyebrow": "THE FIRST WITNESS",
+      "hot_gb": 4.4, "touch_gb": 4.4,
+      "measured": { "verify_wall": "13 s", "note": "48-token golden run in 7 s at the pitch-23 defaults" },
+      "chain": [
+        ["gold", "<b>First real mind</b> through the engine — token-exact vs transformers incl. the EOS"],
+        ["", "<b>Golden</b> <span class='m'>74f5fd</span> — reproduced under every optimization since minting"],
+        ["", "<b>Signed + replay-VERIFIED</b> in 13 s under receipts v1"]
+      ]
+    },
+    {
+      "container": "deepseek-v2-lite-chat-q8.vm3c",
+      "name": "DeepSeek-V2-Lite",
+      "family": "MLA MoE · 64+2 experts",
+      "meta_dir": "DeepSeek-V2-Lite-Chat",
+      "golden": "046306",
+      "receipt": "receipts/v2lite-046306.json",
+      "prompt": "receipts/v2lite-prompt.txt",
+      "eyebrow": "THE FRONTIER'S ARCHITECTURE, POCKET SIZE",
+      "hot_gb": 9.4, "touch_gb": 1.9,
+      "measured": { "tok_s": "11.7", "verify_wall": "27 s", "note": "gate 50 s -> 27 s under vm3ml64 (pitch 17-3)" },
+      "chain": [
+        ["gold", "<b>Minted</b> q8 — the first MLA container (format v3, frozen)"],
+        ["", "<b>Token-exact</b> vs transformers (tools/mla_oracle.py)"],
+        ["", "<b>Receipt VERIFIED</b> in 27 s — golden <span class='m'>046306</span>"]
+      ]
+    },
+    {
+      "container": "gpt-oss-20b-q8.vm3c",
+      "name": "gpt-oss-20b",
+      "family": "sinks · sliding window · MXFP4-native release",
+      "meta_dir": "gpt-oss-20b",
+      "golden": "0dc86d",
+      "receipt": "receipts/oss20b-0dc86d.signed.json",
+      "prompt": "receipts/oss-prompt.txt",
+      "eyebrow": "THE NATIVE-MXFP4 CONSUMER",
+      "hot_gb": 21, "touch_gb": 4.3,
+      "measured": { "verify_wall": "90 s", "note": "64-token golden in 34 s at pitch-23 defaults; downloaded->minted->signed->verified inside one hour" },
+      "chain": [
+        ["gold", "<b>Minted from OpenAI's NATIVE MXFP4</b> — container v5: sinks, sliding 128, clamped GLU"],
+        ["", "<b>Token-exact</b> vs transformers on the first run (five-mechanism tiny face-off)"],
+        ["", "<b>Signed + replay-VERIFIED</b> in 90 s — golden <span class='m'>0dc86d</span>"]
+      ]
+    },
+    {
+      "container": "gpt-oss-120b-q4.vm3c",
+      "name": "gpt-oss-120b",
+      "family": "117B · 128 experts top-4 · minted through the wire",
+      "meta_dir": "gpt-oss-120b-meta",
+      "golden": "f5668f",
+      "receipt": "receipts/oss120b-f5668f.signed.json",
+      "prompt": "receipts/oss120-prompt.txt",
+      "eyebrow": "THE 64 GB TIER'S DAILY DRIVER",
+      "hot_gb": 56, "touch_gb": 3.2,
+      "measured": { "verify_wall": "4 m 46 s", "note": "first words 4m13s cold; 64-token golden in 92 s at pitch-23 defaults; the 63 GB release never fully on disk" },
+      "chain": [
+        ["gold", "<b>Minted THROUGH the wire</b> — keep-3 purge window, checkpoint never fully on disk"],
+        ["", "<b>First words in 4m13s cold</b>, mmap-paged (container exceeds RAM)"],
+        ["", "<b>Signed + replay-VERIFIED</b> in 4m46s — golden <span class='m'>f5668f</span>"]
+      ]
+    },
+    {
+      "container": "kimi-k2.6-q4.vm3c",
+      "name": "Kimi K2.6",
+      "family": "1.03T · 384+1 experts top-8 · INT4 QAT release",
+      "expected_gb": 640,
+      "meta_dir": "kimi-k2.6-meta",
+      "golden": null,
+      "receipt": null,
+      "prompt": null,
+      "eyebrow": "THE TRILLION — MINTING NOW",
+      "hot_gb": 76, "touch_gb": 13,
+      "measured": { "note": "prediction under test: 744B-class per-token cost — the clock follows ACTIVE params (32B), not total" },
+      "chain": [
+        ["gold", "<b>Minting via prefetched supply line</b> — 56 MB/s parallel front end vs the 2 MB/s single stream it replaced"],
+        ["", "<b>Body plan = DeepSeek-V3</b> — the proven v4 math, zero engine changes; vision tower skipped by construction"],
+        ["", "<b>Stone provisional</b> — reseeds from the real vm3ml64 ident at first receipt"]
+      ]
+    }
+  ]
+}

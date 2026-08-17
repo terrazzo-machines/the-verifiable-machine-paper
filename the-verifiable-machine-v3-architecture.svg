@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1A2332"/></marker>
+    <marker id="a-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E7C66"/></marker>
+    <marker id="a-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B07E23"/></marker>
+    <marker id="a-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/></marker>
+    <g id="lock"><path d="M5,7 V5 a4,4 0 0 1 8,0 V7" fill="none" stroke="#0E7C66" stroke-width="1.8"/><rect x="3" y="7" width="12" height="9" rx="2" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.6"/></g>
+    <g id="file"><path d="M0,0 H12 L18,6 V22 H0 Z" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.6"/><path d="M12,0 V6 H18" fill="none" stroke="#B07E23" stroke-width="1.6"/></g>
+  </defs>
+
+  <rect width="1500" height="1000" fill="#FBFAF7"/>
+
+  <!-- header -->
+  <text x="70" y="56" font-size="12" letter-spacing="3" fill="#0E7C66" font-weight="600">FIGURE 3 · THE SOFTWARE-FIRST FABRIC</text>
+  <text x="70" y="94" font-size="30" font-weight="700" fill="#1A2332">The Verifiable Machine, v3</text>
+  <text x="70" y="120" font-size="14.5" fill="#5A6472">Deterministic microVMs forked from one golden snapshot — trust as tiered software, silicon demoted to a feature flag.</text>
+
+  <!-- ===================== CLIENT / VERIFIER ===================== -->
+  <rect x="70" y="170" width="290" height="185" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.5"/>
+  <g transform="translate(318,184)"><path d="M12 0 L24 5 V13 Q24 22 12 27 Q0 22 0 13 V5 Z" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.6"/><polyline points="6,13 10.5,17.5 18,9" fill="none" stroke="#0E7C66" stroke-width="2.2"/></g>
+  <text x="90" y="206" font-size="15" font-weight="700" fill="#1A2332">CLIENT / VERIFIER</text>
+  <text x="90" y="233" font-size="12.5" font-weight="600" fill="#1A2332">sends prompt + seed</text>
+  <text x="90" y="253" font-size="12.5" font-weight="600" fill="#1A2332">receives tokens + a replay receipt</text>
+  <text x="90" y="278" font-size="11.5" fill="#4A5563">· replays any response on a laptop</text>
+  <text x="90" y="299" font-size="11.5" fill="#4A5563">· needs no permission, vendor, or TEE</text>
+  <text x="90" y="332" font-size="11" font-style="italic" fill="#6B7683">trust is checked, not granted</text>
+
+  <!-- ===================== THE HOST ===================== -->
+  <rect x="70" y="690" width="290" height="200" rx="10" fill="#F1F0EC" stroke="#6B7280" stroke-width="1.5"/>
+  <text x="90" y="722" font-size="13.5" font-weight="700" fill="#3A4450">THE HOST — YOUR METAL</text>
+  <text x="90" y="748" font-size="11.5" fill="#4A5563">operated by you or your customer</text>
+  <text x="90" y="769" font-size="11.5" fill="#4A5563">sees everything — and that's the point:</text>
+  <text x="90" y="790" font-size="11.5" fill="#4A5563">privacy at Tier 0 comes from possession</text>
+  <line x1="90" y1="808" x2="340" y2="808" stroke="#D5D3CC" stroke-width="1"/>
+  <text x="90" y="832" font-size="11" fill="#B3402A">hostile host instead? attach the TEE</text>
+  <text x="90" y="851" font-size="11" fill="#B3402A">module — Tier 3 is a flag, not a rewrite</text>
+
+  <!-- ===================== THE FABRIC ===================== -->
+  <rect x="420" y="160" width="650" height="740" rx="14" fill="#F7F6F2" stroke="#1A2332" stroke-width="1.8"/>
+  <rect x="445" y="148" width="300" height="24" rx="12" fill="#1A2332"/>
+  <text x="595" y="164" font-size="11.5" font-weight="700" letter-spacing="1.5" fill="#FFFFFF" text-anchor="middle">ONE PHYSICAL HOST · THE FABRIC</text>
+
+  <!-- determinism chip -->
+  <rect x="490" y="185" width="560" height="44" rx="8" fill="#FFFFFF" stroke="#0E7C66" stroke-width="1.8"/>
+  <text x="770" y="203" font-size="12.5" font-weight="700" fill="#0B4F41" text-anchor="middle">DETERMINISTIC ENGINE — SAME INPUTS, SAME TOKENS</text>
+  <text x="770" y="221" font-size="11.2" fill="#3E5A52" text-anchor="middle">static C binary · integer kernels · seeded sampling → every output is re-derivable</text>
+
+  <!-- golden snapshot -->
+  <rect x="490" y="250" width="560" height="80" rx="8" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.8"/>
+  <use href="#file" transform="translate(1012,266)"/>
+  <text x="510" y="278" font-size="13" font-weight="700" fill="#7A5716">GOLDEN SNAPSHOT — one file</text>
+  <text x="510" y="300" font-size="11.5" fill="#6B532B">booted guest · 372 GB int4 resident (mmap-first) · caches warm · reproducibly built</text>
+  <text x="510" y="319" font-size="11" font-style="italic" fill="#8A6E2F">the distribution artifact — sign it, publish the hash, restore it anywhere</text>
+
+  <!-- fork fan -->
+  <path d="M600,330 V376" stroke="#B07E23" stroke-width="2.4" fill="none" marker-end="url(#a-gold)"/>
+  <path d="M770,330 V376" stroke="#B07E23" stroke-width="2.4" fill="none" marker-end="url(#a-gold)"/>
+  <path d="M940,330 V376" stroke="#B07E23" stroke-width="2.4" fill="none" marker-end="url(#a-gold)"/>
+  <text x="497" y="358" font-size="10.5" fill="#B07E23" font-weight="600">fork · ms</text>
+
+  <!-- microVM row -->
+  <rect x="490" y="380" width="170" height="160" rx="8" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.4"/>
+  <use href="#lock" transform="translate(637,390)"/>
+  <text x="505" y="406" font-size="12" font-weight="700" fill="#1A2332">microVM · agent A</text>
+  <text x="505" y="430" font-size="10.8" fill="#4A5563">guest + engine</text>
+  <text x="505" y="448" font-size="10.8" fill="#4A5563">(measured build)</text>
+  <text x="505" y="472" font-size="10.8" fill="#4A5563">private KV only —</text>
+  <text x="505" y="490" font-size="10.8" fill="#4A5563">dirtied pages</text>
+
+  <rect x="685" y="380" width="170" height="160" rx="8" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.4"/>
+  <text x="700" y="406" font-size="12" font-weight="700" fill="#1A2332">microVM · tenant B</text>
+  <text x="700" y="430" font-size="10.8" fill="#4A5563">hardware-grade</text>
+  <text x="700" y="448" font-size="10.8" fill="#4A5563">isolation per fork</text>
+  <text x="700" y="472" font-size="10.8" fill="#4A5563">pause to disk ·</text>
+  <text x="700" y="490" font-size="10.8" fill="#4A5563">resume · migrate</text>
+
+  <rect x="880" y="380" width="170" height="160" rx="8" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.4"/>
+  <text x="895" y="406" font-size="12" font-weight="700" fill="#1A2332">microVM · session C</text>
+  <text x="895" y="430" font-size="10.8" fill="#4A5563">scale-to-zero:</text>
+  <text x="895" y="448" font-size="10.8" fill="#4A5563">idle costs disk,</text>
+  <text x="895" y="472" font-size="10.8" fill="#4A5563">not silicon ·</text>
+  <text x="895" y="490" font-size="10.8" fill="#4A5563">… clone N</text>
+
+  <!-- CoW note -->
+  <line x1="575" y1="540" x2="575" y2="556" stroke="#B07E23" stroke-width="1.8"/>
+  <line x1="770" y1="540" x2="770" y2="556" stroke="#B07E23" stroke-width="1.8"/>
+  <line x1="965" y1="540" x2="965" y2="556" stroke="#B07E23" stroke-width="1.8"/>
+  <line x1="575" y1="556" x2="965" y2="556" stroke="#B07E23" stroke-width="1.8"/>
+  <text x="770" y="578" font-size="11.5" font-weight="600" fill="#7A5716" text-anchor="middle">copy-on-write: ONE physical copy of the weights serves every clone</text>
+  <text x="770" y="597" font-size="10.8" fill="#8A6E2F" text-anchor="middle">each fork pays only its dirtied pages — gigabytes of KV, not 372 GB of model</text>
+
+  <!-- VMM layer -->
+  <rect x="490" y="620" width="560" height="80" rx="8" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.6"/>
+  <text x="510" y="646" font-size="13" font-weight="700" fill="#1A2332">HOST VMM — KVM + Firecracker / Cloud Hypervisor</text>
+  <text x="510" y="668" font-size="11.5" fill="#4A5563">snapshot · restore · live-migrate (solved 2005) · scale-to-zero</text>
+  <text x="510" y="688" font-size="11.5" fill="#4A5563">virtio only · VFIO-free · pause a fleet to disk, resume in milliseconds</text>
+
+  <!-- hardware -->
+  <text x="490" y="757" font-size="11" letter-spacing="2" fill="#486B61" font-weight="600">L0 · ANY HARDWARE — SILICON AS FEATURE FLAG</text>
+  <rect x="490" y="765" width="560" height="105" rx="8" fill="#16324F"/>
+  <text x="510" y="791" font-size="13" font-weight="700" fill="#FFFFFF">COMMODITY SILICON — NO TEE REQUIRED</text>
+  <text x="510" y="813" font-size="11" fill="#C6D2DE">any recent x86 / ARM with KVM · 0.5–2 TB DDR5 · big NVMe for snapshots</text>
+  <text x="510" y="833" font-size="11" fill="#C6D2DE">bandwidth sets the aggregate ceiling — shared across active clones</text>
+  <text x="510" y="853" font-size="11" fill="#D9B36A">TEE present? that unlocks Tier 3 — a flag, not a foundation</text>
+  <text x="770" y="890" font-size="10.8" fill="#4A5563" text-anchor="middle">aggregate decode ceiling ≈ DRAM bandwidth ÷ ~20 GB per token — forking multiplies isolation, not bandwidth</text>
+
+  <!-- ===================== VERIFICATION PLANE ===================== -->
+  <rect x="1120" y="170" width="310" height="160" rx="10" fill="#FFFFFF" stroke="#0E7C66" stroke-width="1.8"/>
+  <text x="1140" y="198" font-size="12.5" font-weight="700" fill="#0B4F41">REPLAY RECEIPT — every response</text>
+  <text x="1140" y="222" font-size="11" fill="#4A5563">model# · engine# · config# · seed</text>
+  <text x="1140" y="241" font-size="11" fill="#4A5563">prompt# → output#   (signed)</text>
+  <line x1="1140" y1="257" x2="1410" y2="257" stroke="#CFE5DF" stroke-width="1"/>
+  <text x="1140" y="281" font-size="11.5" fill="#3E5A52">anyone re-runs it and compares —</text>
+  <text x="1140" y="301" font-size="11.5" fill="#3E5A52">verification after the fact</text>
+
+  <rect x="1120" y="370" width="310" height="105" rx="10" fill="#FFFFFF" stroke="#0E7C66" stroke-width="1.5"/>
+  <text x="1140" y="398" font-size="12.5" font-weight="700" fill="#0B4F41">REPLICATION QUORUM</text>
+  <text x="1140" y="422" font-size="11.5" fill="#4A5563">2–3 independent hosts, same seeds —</text>
+  <text x="1140" y="442" font-size="11.5" fill="#4A5563">token hashes must agree · any single</text>
+  <text x="1140" y="462" font-size="11.5" fill="#4A5563">cheater is caught · costs N×</text>
+
+  <rect x="1120" y="515" width="310" height="115" rx="10" fill="#FFFDF6" stroke="#B07E23" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="1140" y="543" font-size="12.5" font-weight="700" fill="#7A5716">TEE MODULE — optional (T3)</text>
+  <text x="1140" y="567" font-size="11.5" fill="#6B532B">for hostile hosts: attach v2 —</text>
+  <text x="1140" y="587" font-size="11.5" fill="#6B532B">TDX / SEV-SNP + attestation —</text>
+  <text x="1140" y="607" font-size="11.5" fill="#6B532B">as a plug-in, not a foundation</text>
+
+  <rect x="1120" y="670" width="310" height="100" rx="10" fill="none" stroke="#9AA3AF" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="1140" y="698" font-size="12.5" font-weight="700" fill="#7A828E">zkML — THE HORIZON (T4)</text>
+  <text x="1140" y="722" font-size="11.5" fill="#8A93A0">pure-math proof of inference —</text>
+  <text x="1140" y="742" font-size="11.5" fill="#8A93A0">real for small models · far from frontier</text>
+
+  <!-- ===================== FLOWS ===================== -->
+  <!-- data in/out -->
+  <path d="M360,290 H462 V420 H484" stroke="#1A2332" stroke-width="2.4" fill="none" marker-end="url(#a-ink)"/>
+  <text x="366" y="281" font-size="10.5" font-weight="600" fill="#1A2332">④ prompt + seed</text>
+  <path d="M486,470 H448 V330 H368" stroke="#1A2332" stroke-width="1.8" fill="none" marker-end="url(#a-ink)"/>
+  <text x="366" y="348" font-size="10" fill="#4A5563">tokens + receipt</text>
+  <!-- receipt emission -->
+  <path d="M1050,420 H1090 V250 H1112" stroke="#0E7C66" stroke-width="2.2" fill="none" marker-end="url(#a-teal)"/>
+  <text transform="translate(1079,410) rotate(-90)" font-size="10.5" fill="#0E7C66" font-weight="600">① every response emits a receipt</text>
+  <!-- receipt to replication -->
+  <path d="M1275,332 V362" stroke="#0E7C66" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#a-teal)"/>
+  <text x="1287" y="352" font-size="10.5" fill="#4A7A6D">same hashes, N hosts ②</text>
+  <!-- TEE attach -->
+  <path d="M1120,572 H1076" stroke="#B07E23" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#a-gold)"/>
+  <text x="1114" y="562" font-size="10.5" fill="#B07E23" text-anchor="end">attach ③</text>
+  <!-- host operates -->
+  <path d="M215,690 V640 H414" stroke="#6B7280" stroke-width="1.8" fill="none" marker-end="url(#a-grey)"/>
+  <text x="300" y="630" font-size="10.5" fill="#6B7280" text-anchor="middle">you operate the metal</text>
+
+  <!-- ===================== TRUST LADDER ===================== -->
+  <text x="70" y="927" font-size="10" letter-spacing="2" fill="#0E7C66" font-weight="600">TRUST LADDER</text>
+  <rect x="200" y="908" width="215" height="28" rx="14" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.3"/>
+  <text x="307" y="926" font-size="10.8" fill="#0B4F41" text-anchor="middle">T0 · POSSESSION — run it yourself</text>
+  <rect x="428" y="908" width="230" height="28" rx="14" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.3"/>
+  <text x="543" y="926" font-size="10.8" fill="#0B4F41" text-anchor="middle">T1 · RECEIPTS — replayable outputs</text>
+  <rect x="671" y="908" width="235" height="28" rx="14" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.3"/>
+  <text x="788" y="926" font-size="10.8" fill="#0B4F41" text-anchor="middle">T2 · REPLICATION — quorum of hosts</text>
+  <rect x="919" y="908" width="235" height="28" rx="14" fill="#FFFDF6" stroke="#B07E23" stroke-width="1.3" stroke-dasharray="5 3"/>
+  <text x="1036" y="926" font-size="10.8" fill="#7A5716" text-anchor="middle">T3 · TEE — hostile-host module</text>
+  <rect x="1167" y="908" width="263" height="28" rx="14" fill="none" stroke="#9AA3AF" stroke-width="1.3" stroke-dasharray="5 3"/>
+  <text x="1298" y="926" font-size="10.8" fill="#7A828E" text-anchor="middle">T4 · zkML — pure math (horizon)</text>
+
+  <!-- ===================== LEGEND ===================== -->
+  <line x1="70" y1="971" x2="106" y2="971" stroke="#0E7C66" stroke-width="2.5"/>
+  <text x="114" y="975" font-size="12" fill="#3A4450">verification path</text>
+  <line x1="300" y1="971" x2="336" y2="971" stroke="#B07E23" stroke-width="2.5"/>
+  <text x="344" y="975" font-size="12" fill="#3A4450">fork from golden snapshot</text>
+  <line x1="590" y1="971" x2="626" y2="971" stroke="#1A2332" stroke-width="2.5"/>
+  <text x="634" y="975" font-size="12" fill="#3A4450">data path</text>
+  <line x1="790" y1="971" x2="826" y2="971" stroke="#B07E23" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="834" y="975" font-size="12" fill="#3A4450">optional TEE attach (T3)</text>
+  <line x1="1080" y1="971" x2="1116" y2="971" stroke="#6B7280" stroke-width="2"/>
+  <text x="1124" y="975" font-size="12" fill="#3A4450">operator plane</text>
+</svg>

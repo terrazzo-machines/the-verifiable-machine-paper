@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 760" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <rect width="1250" height="760" fill="#FBFAF7"/>
+  <text x="60" y="52" font-size="12" letter-spacing="3" fill="#0E7C66" font-weight="600">FIGURE 8 · THE SPARSITY DIVIDEND</text>
+  <text x="60" y="88" font-size="28" font-weight="700" fill="#1A2332">Pay for What Routes</text>
+  <text x="60" y="112" font-size="13.5" fill="#5A6472">Decode traffic scales with ACTIVE parameters, not total. Outlined = in the container; filled = read for this token.</text>
+
+  <!-- routing explainer strip -->
+  <rect x="60" y="136" width="1150" height="58" rx="10" fill="#FFFFFF" stroke="#B7B2A4" stroke-width="1.2"/>
+  <text x="84" y="171" font-size="12" fill="#5A6472">one MoE layer:</text>
+  <rect x="186" y="152" width="26" height="26" rx="5" fill="none" stroke="#B7CFC8" stroke-width="1.6"/>
+  <rect x="218" y="152" width="26" height="26" rx="5" fill="#0E7C66" opacity="0.85"/>
+  <rect x="250" y="152" width="26" height="26" rx="5" fill="none" stroke="#B7CFC8" stroke-width="1.6"/>
+  <rect x="282" y="152" width="26" height="26" rx="5" fill="none" stroke="#B7CFC8" stroke-width="1.6"/>
+  <rect x="314" y="152" width="26" height="26" rx="5" fill="none" stroke="#B7CFC8" stroke-width="1.6"/>
+  <rect x="346" y="152" width="26" height="26" rx="5" fill="#0E7C66" opacity="0.85"/>
+  <rect x="378" y="152" width="26" height="26" rx="5" fill="none" stroke="#B7CFC8" stroke-width="1.6"/>
+  <rect x="410" y="152" width="26" height="26" rx="5" fill="none" stroke="#B7CFC8" stroke-width="1.6"/>
+  <text x="452" y="171" font-size="12" fill="#3E5A52">router picks 2 of 8 → only those experts' pages are read; attention + norms always; cold experts never leave the page cache's edge</text>
+
+  <!-- Row 1: TinyLlama dense -->
+  <text x="60" y="242" font-size="14" font-weight="700" fill="#1A2332">TinyLlama-1.1B · f32 · dense</text>
+  <text x="60" y="261" font-size="11.5" fill="#5A6472">4.4 GB container</text>
+  <rect x="340" y="222" width="810" height="46" rx="8" fill="#0E7C66" opacity="0.85"/>
+  <text x="745" y="250" font-size="12.5" font-weight="700" fill="#FBFAF7" text-anchor="middle">touched per token: 4.4 GB — all of it (100%)</text>
+  <text x="340" y="288" font-size="11" fill="#5A6472">dense has no dividend: every parameter, every token</text>
+  <rect x="920" y="276" width="230" height="20" rx="6" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1"/>
+  <text x="1035" y="290" font-size="10.5" font-weight="600" fill="#0B4F41" text-anchor="middle">measured · real weights · this repo</text>
+
+  <!-- Row 2: Mixtral -->
+  <text x="60" y="356" font-size="14" font-weight="700" fill="#1A2332">Mixtral-8x7B · q8 · 8 experts, top-2</text>
+  <text x="60" y="375" font-size="11.5" fill="#5A6472">~47 GB container · 46.7B params</text>
+  <rect x="340" y="336" width="810" height="46" rx="8" fill="none" stroke="#B7CFC8" stroke-width="1.8"/>
+  <rect x="340" y="336" width="224" height="46" rx="8" fill="#0E7C66" opacity="0.85"/>
+  <text x="452" y="364" font-size="12.5" font-weight="700" fill="#FBFAF7" text-anchor="middle">~13 GB (28%)</text>
+  <text x="600" y="364" font-size="11.5" fill="#5A6472">12.9B active of 46.7B — fits warm in a 64 GB laptop's cache</text>
+  <text x="340" y="402" font-size="11" fill="#5A6472">2 experts × 32 layers + shared attention — the arithmetic this repo measures next</text>
+  <rect x="920" y="390" width="230" height="20" rx="6" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1"/>
+  <text x="1035" y="404" font-size="10.5" font-weight="600" fill="#0B4F41" text-anchor="middle">measured: 27.8 GB hot set · 41% untouched</text>
+
+  <!-- Row 3: 744B class -->
+  <text x="60" y="470" font-size="14" font-weight="700" fill="#1A2332">GLM-5.2-class · int4 · 744B MoE</text>
+  <text x="60" y="489" font-size="11.5" fill="#5A6472">~372 GB container</text>
+  <rect x="340" y="450" width="810" height="46" rx="8" fill="none" stroke="#B7CFC8" stroke-width="1.8"/>
+  <rect x="340" y="450" width="44" height="46" rx="8" fill="#0E7C66" opacity="0.85"/>
+  <text x="400" y="478" font-size="12.5" font-weight="700" fill="#0B4F41">~20 GB (5.4%)</text>
+  <text x="600" y="478" font-size="11.5" fill="#5A6472">~40B active of 744B — a 372 GB mind decodes through a ~20 GB window</text>
+  <text x="340" y="516" font-size="11" fill="#5A6472">the frontier class the architecture is sized for (paper §2)</text>
+  <rect x="920" y="504" width="230" height="20" rx="6" fill="#EFEDE6" stroke="#B7B2A4" stroke-width="1"/>
+  <text x="1035" y="518" font-size="10.5" font-weight="600" fill="#5A554A" text-anchor="middle">colibrì-lineage numbers · not yet ours</text>
+
+  <!-- consequence strip -->
+  <rect x="60" y="552" width="1150" height="76" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.4"/>
+  <text x="84" y="582" font-size="12.5" font-weight="700" fill="#1A2332">what the fraction buys, at three RAM sizes</text>
+  <text x="84" y="604" font-size="11.5" fill="#3E5A52">64 GB laptop: Mixtral-8x7B q8 fully resident — no paging at all · 128 GB M4 Max: 744B-class pages its ~20 GB window through the cache, slowly, bit-identically</text>
+  <text x="84" y="622" font-size="11.5" fill="#3E5A52">768 GB appliance: everything resident, channel-bound, fast</text>
+
+  <rect x="60" y="662" width="1150" height="52" rx="10" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.6"/>
+  <text x="635" y="686" font-size="12.5" font-weight="700" fill="#0B4F41" text-anchor="middle">bandwidth scales with active parameters — the dividend that makes CPU-pure frontier inference possible</text>
+  <text x="635" y="705" font-size="11" fill="#3E5A52" text-anchor="middle">mmap-first makes the window physical: touched pages live in RAM, untouched pages never load (Figure 7 · docs/mac-lane.md)</text>
+</svg>

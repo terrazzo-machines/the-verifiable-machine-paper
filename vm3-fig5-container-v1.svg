@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 700" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs><marker id="ai5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1A2332"/></marker></defs>
+  <rect width="1250" height="700" fill="#FBFAF7"/>
+  <text x="60" y="52" font-size="12" letter-spacing="3" fill="#0E7C66" font-weight="600">FIGURE 5 · THE MODEL AS ONE HASHABLE FILE</text>
+  <text x="60" y="88" font-size="28" font-weight="700" fill="#1A2332">Container v1</text>
+  <text x="60" y="112" font-size="13.5" fill="#5A6472">docs/container.md — binary, little-endian, mmap-native. The file's sha256 is the model identity in every receipt.</text>
+
+  <!-- identity bracket -->
+  <path d="M60,158 V150 H1190 V158" stroke="#0E7C66" stroke-width="2" fill="none"/>
+  <rect x="440" y="136" width="370" height="26" rx="13" fill="#0E7C66"/>
+  <text x="625" y="153" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">sha256( entire file ) = model identity</text>
+
+  <!-- byte bar -->
+  <rect x="60" y="180" width="150" height="70" fill="#16324F"/>
+  <text x="135" y="209" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">HEADER</text>
+  <text x="135" y="228" font-size="10.5" fill="#C6D2DE" text-anchor="middle">48 B</text>
+  <rect x="210" y="180" width="270" height="70" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.4"/>
+  <text x="345" y="209" font-size="11.5" font-weight="700" fill="#0B4F41" text-anchor="middle">TENSOR TABLE</text>
+  <text x="345" y="228" font-size="10.5" fill="#3E5A52" text-anchor="middle">n_tensors × 104 B</text>
+  <rect x="480" y="180" width="55" height="70" fill="#EFEDE6" stroke="#B7B2A4" stroke-width="1.2"/>
+  <text x="507" y="213" font-size="9.5" fill="#7A756A" text-anchor="middle">pad</text>
+  <text x="507" y="228" font-size="9.5" fill="#7A756A" text-anchor="middle">→64</text>
+  <rect x="535" y="180" width="655" height="70" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.5"/>
+  <text x="862" y="209" font-size="11.5" font-weight="700" fill="#7A5716" text-anchor="middle">TENSOR DATA</text>
+  <text x="862" y="228" font-size="10.5" fill="#8A6E2F" text-anchor="middle">64-byte aligned · referenced by absolute offsets · fp32 (int lanes: pitch 5)</text>
+
+  <!-- header exploded -->
+  <path d="M135,250 V282" stroke="#1A2332" stroke-width="1.5" fill="none" marker-end="url(#ai5)"/>
+  <rect x="60" y="288" width="520" height="150" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.4"/>
+  <text x="80" y="314" font-size="12.5" font-weight="700" fill="#1A2332">header fields (u32 unless noted)</text>
+  <text x="80" y="340" font-size="11" fill="#4A5563">magic "VM3C" · version=1 · dim · ffn</text>
+  <text x="80" y="362" font-size="11" fill="#4A5563">n_heads · n_layers · vocab · max_seq</text>
+  <text x="80" y="384" font-size="11" fill="#4A5563">rope_theta f32 · norm_eps f32</text>
+  <text x="80" y="406" font-size="11" fill="#4A5563">n_tensors · reserved</text>
+  <text x="80" y="428" font-size="10" font-style="italic" fill="#6B7683">no magic? → opaque container → legacy placeholder path (migration honesty)</text>
+
+  <!-- entry exploded -->
+  <path d="M345,250 V282" stroke="#0E7C66" stroke-width="1.5" fill="none" marker-end="url(#ai5)"/>
+  <rect x="620" y="288" width="570" height="150" rx="10" fill="#FFFFFF" stroke="#0E7C66" stroke-width="1.4"/>
+  <text x="640" y="314" font-size="12.5" font-weight="700" fill="#0B4F41">one table entry (104 B)</text>
+  <text x="640" y="340" font-size="11" fill="#4A5563">name char[48] — "tok_emb", "l0.wq", "l1.w2", "out_norm", "lm_head" …</text>
+  <text x="640" y="362" font-size="11" fill="#4A5563">dtype u32 (0 = f32) · ndim u32 · shape u64[4]</text>
+  <text x="640" y="384" font-size="11" fill="#4A5563">offset u64 (absolute, 4-aligned) · size u64 (= Π shape × 4, checked)</text>
+  <text x="640" y="410" font-size="10" font-style="italic" fill="#6B7683">2-D tensors are row-major [out, in] — matvec order is defined: y[o] = Σᵢ W[o·in + i] · xᵢ</text>
+
+  <!-- mmap strip -->
+  <rect x="60" y="480" width="1130" height="130" rx="10" fill="#F3F8F6" stroke="#0E7C66" stroke-width="1.5" stroke-dasharray="8 5"/>
+  <text x="80" y="510" font-size="12.5" font-weight="700" fill="#0B4F41">how the engine reads it — no copies, no weight allocation</text>
+  <text x="80" y="538" font-size="11.5" fill="#3E5A52">open() → mmap(PROT_READ, MAP_PRIVATE) → vm3c_parse() validates header + every entry → vm3c_f32("l0.wq") returns a const float* straight into the mapping</text>
+  <text x="80" y="562" font-size="11.5" fill="#3E5A52">forward.c computes through those pointers · the OS decides residency (Figure 7) · the hash decides identity (Figure 4)</text>
+  <text x="80" y="590" font-size="10.5" font-style="italic" fill="#4A7A6D">deliberate: our own format, because the container's hash is the trust primitive — convertibility from common formats is tooling, not identity</text>
+</svg>

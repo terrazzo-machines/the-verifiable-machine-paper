@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 760" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1A2332"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B07E23"/></marker>
+    <marker id="av" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E7C66"/></marker>
+    <g id="receipt">
+      <rect x="0" y="0" width="34" height="44" rx="4" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.4"/>
+      <line x1="6" y1="10" x2="28" y2="10" stroke="#B7CFC8" stroke-width="2"/>
+      <line x1="6" y1="18" x2="28" y2="18" stroke="#B7CFC8" stroke-width="2"/>
+      <line x1="6" y1="26" x2="20" y2="26" stroke="#B7CFC8" stroke-width="2"/>
+      <circle cx="25" cy="34" r="6" fill="#0E7C66"/>
+      <path d="M22,34 l2.2,2.2 L29,31.5" stroke="#FBFAF7" stroke-width="1.6" fill="none"/>
+    </g>
+  </defs>
+  <rect width="1250" height="760" fill="#FBFAF7"/>
+  <text x="60" y="52" font-size="12" letter-spacing="3" fill="#0E7C66" font-weight="600">FIGURE 10 · THE VERIFICATION NETWORK</text>
+  <text x="60" y="88" font-size="28" font-weight="700" fill="#1A2332">One Untrusted Wire, Three Independent Checks</text>
+  <text x="60" y="112" font-size="13.5" fill="#5A6472">The trust ladder as hardware — check the host, never trust it.</text>
+
+  <!-- ===== serving row ===== -->
+  <!-- CLIENT laptop -->
+  <rect x="120" y="204" width="140" height="92" rx="8" fill="#FFFFFF" stroke="#1A2332" stroke-width="2"/>
+  <rect x="130" y="214" width="120" height="72" rx="4" fill="#E7F4F0"/>
+  <text x="190" y="245" font-size="10" font-weight="600" fill="#0B4F41" text-anchor="middle">prompt · seed</text>
+  <text x="190" y="262" font-size="10" font-weight="600" fill="#0B4F41" text-anchor="middle">receipt.json</text>
+  <path d="M100,296 L280,296 L298,322 L82,322 z" fill="#1A2332"/>
+  <rect x="168" y="303" width="44" height="6" rx="3" fill="#5A6472"/>
+  <text x="214" y="352" font-size="12.5" font-weight="700" fill="#1A2332" text-anchor="middle">CLIENT</text>
+  <text x="214" y="369" font-size="10" fill="#5A6472" text-anchor="middle">keeps its own prompt — and every receipt</text>
+
+  <!-- network cloud -->
+  <path d="M341,285 q-26,0 -26,-21 q0,-17 17,-20 q5,-19 26,-19 q17,0 23,14 q20,0 20,19 q0,27 -28,27 z" fill="#FFFFFF" stroke="#7A756A" stroke-width="1.8"/>
+  <text x="371" y="268" font-size="9.5" fill="#5A554A" text-anchor="middle">network</text>
+
+  <!-- request / response wires -->
+  <path d="M280,240 H322" stroke="#1A2332" stroke-width="2" fill="none" marker-end="url(#ai)"/>
+  <path d="M405,240 H470" stroke="#1A2332" stroke-width="2" fill="none" marker-end="url(#ai)"/>
+  <text x="375" y="196" font-size="9.5" font-weight="600" fill="#1A2332" text-anchor="middle">POST /generate</text>
+  <text x="375" y="210" font-size="9" fill="#5A6472" text-anchor="middle">{prompt, seed, config}</text>
+  <path d="M470,300 H290" stroke="#1A2332" stroke-width="2" fill="none" marker-end="url(#ai)"/>
+  <text x="380" y="316" font-size="9.5" font-weight="600" fill="#1A2332" text-anchor="middle">token ids · receipt</text>
+  <g transform="translate(424,246) scale(0.62)"><use href="#receipt"/></g>
+
+  <!-- MUSCLE rack -->
+  <rect x="452" y="128" width="212" height="296" rx="12" fill="none" stroke="#7A756A" stroke-width="1.6" stroke-dasharray="7 4"/>
+  <text x="558" y="120" font-size="11.5" font-weight="700" fill="#5A554A" text-anchor="middle">MUSCLE HOST — UNTRUSTED OPERATOR</text>
+  <rect x="470" y="142" width="176" height="236" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="2"/>
+  <rect x="482" y="154" width="152" height="46" rx="6" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.6"/>
+  <text x="558" y="173" font-size="10" font-weight="700" fill="#7A5716" text-anchor="middle">golden.snap</text>
+  <text x="558" y="188" font-size="8.5" fill="#8A6E2F" text-anchor="middle">warm model · sha256 published</text>
+  <rect x="482" y="208" width="152" height="46" rx="6" fill="#FBFAF7" stroke="#B7CFC8" stroke-width="1.4"/>
+  <circle cx="496" cy="231" r="4" fill="#0E7C66"/><circle cx="508" cy="231" r="4" fill="#0E7C66"/>
+  <text x="576" y="235" font-size="10" font-weight="600" fill="#1A2332" text-anchor="middle">microVM A · vm3</text>
+  <rect x="482" y="262" width="152" height="46" rx="6" fill="#FBFAF7" stroke="#B7CFC8" stroke-width="1.4"/>
+  <circle cx="496" cy="285" r="4" fill="#0E7C66"/><circle cx="508" cy="285" r="4" fill="#0E7C66"/>
+  <text x="576" y="289" font-size="10" font-weight="600" fill="#1A2332" text-anchor="middle">microVM B · vm3</text>
+  <rect x="482" y="316" width="152" height="46" rx="6" fill="#FBFAF7" stroke="#B7CFC8" stroke-width="1.4"/>
+  <circle cx="496" cy="339" r="4" fill="#0E7C66"/><circle cx="508" cy="339" r="4" fill="#0E7C66"/>
+  <text x="576" y="343" font-size="10" font-weight="600" fill="#1A2332" text-anchor="middle">microVM C · vm3</text>
+  <text x="558" y="398" font-size="9.5" fill="#5A6472" text-anchor="middle">one copy of the weights — CoW to every clone</text>
+  <text x="558" y="412" font-size="9.5" fill="#5A6472" text-anchor="middle">fork: ms · deterministic: (prompt, seed) → tokens</text>
+
+  <!-- REPLICA rack -->
+  <rect x="890" y="176" width="164" height="204" rx="12" fill="none" stroke="#7A756A" stroke-width="1.4" stroke-dasharray="7 4"/>
+  <rect x="906" y="190" width="132" height="150" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="2"/>
+  <rect x="916" y="202" width="112" height="36" rx="5" fill="#FBFAF7" stroke="#B7CFC8" stroke-width="1.3"/>
+  <circle cx="928" cy="220" r="3.5" fill="#0E7C66"/><text x="978" y="224" font-size="9" fill="#1A2332" text-anchor="middle">same fabric</text>
+  <rect x="916" y="246" width="112" height="36" rx="5" fill="#FBFAF7" stroke="#B7CFC8" stroke-width="1.3"/>
+  <circle cx="928" cy="264" r="3.5" fill="#0E7C66"/><text x="978" y="268" font-size="9" fill="#1A2332" text-anchor="middle">same (prompt, seed)</text>
+  <rect x="916" y="290" width="112" height="36" rx="5" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.3"/>
+  <text x="972" y="312" font-size="9" font-weight="700" fill="#0B4F41" text-anchor="middle">hashes must agree</text>
+  <text x="972" y="400" font-size="11" font-weight="700" fill="#5A554A" text-anchor="middle">REPLICA — INDEPENDENT OPERATOR</text>
+  <text x="972" y="416" font-size="9.5" fill="#5A6472" text-anchor="middle">T2: one cheater is caught in-line</text>
+
+  <!-- T2 dispatch corridor (south of the rack) -->
+  <path d="M371,285 V446 H972 V386" stroke="#1A2332" stroke-width="1.8" fill="none" stroke-dasharray="2 4" marker-end="url(#ai)"/>
+  <text x="485" y="438" font-size="9.5" font-weight="600" fill="#5A554A" text-anchor="middle">T2 dispatch — identical request</text>
+
+  <!-- ===== verification row ===== -->
+  <!-- receipt wire client -> judge -->
+  <path d="M96,322 V548 H114" stroke="#0E7C66" stroke-width="2" fill="none" marker-end="url(#av)"/>
+  <g transform="translate(60,404) scale(0.62)"><use href="#receipt"/></g>
+  <text x="112" y="416" font-size="9.5" font-weight="600" fill="#0B4F41">receipt.json +</text>
+  <text x="112" y="429" font-size="9.5" font-weight="600" fill="#0B4F41">the client's own prompt</text>
+
+  <!-- JUDGE laptop -->
+  <rect x="120" y="508" width="140" height="92" rx="8" fill="#FFFFFF" stroke="#0E7C66" stroke-width="2"/>
+  <rect x="130" y="518" width="120" height="72" rx="4" fill="#E7F4F0"/>
+  <text x="190" y="546" font-size="9.5" font-weight="700" fill="#0B4F41" text-anchor="middle">vm3-verify</text>
+  <text x="190" y="561" font-size="8.5" fill="#3E5A52" text-anchor="middle">hash-check · re-execute</text>
+  <text x="190" y="574" font-size="8.5" fill="#3E5A52" text-anchor="middle">compare output hash</text>
+  <path d="M100,600 L280,600 L298,626 L82,626 z" fill="#0E7C66"/>
+  <rect x="168" y="607" width="44" height="6" rx="3" fill="#E7F4F0"/>
+  <circle cx="268" cy="514" r="18" fill="none" stroke="#0E7C66" stroke-width="4"/>
+  <line x1="281" y1="527" x2="296" y2="543" stroke="#0E7C66" stroke-width="5" stroke-linecap="round"/>
+  <text x="190" y="652" font-size="12.5" font-weight="700" fill="#0B4F41" text-anchor="middle">THE JUDGE — any laptop</text>
+  <text x="190" y="668" font-size="10" fill="#3E5A52" text-anchor="middle">prints VERIFIED · or DEVIATION = cryptographic evidence</text>
+
+  <!-- severed uplink -->
+  <path d="M260,522 H316" stroke="#0E7C66" stroke-width="2" fill="none"/>
+  <path d="M280,513 L298,531 M298,513 L280,531" stroke="#B0362C" stroke-width="2.6" fill="none"/>
+  <text x="330" y="518" font-size="9.5" font-weight="700" fill="#B0362C">replay needs no network,</text>
+  <text x="330" y="531" font-size="9.5" font-weight="700" fill="#B0362C">no permission — the point</text>
+
+  <!-- transparency log cylinder -->
+  <ellipse cx="965" cy="512" rx="82" ry="18" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.8"/>
+  <path d="M883,512 V608 a82,18 0 0 0 164,0 V512" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.8"/>
+  <text x="965" y="548" font-size="10.5" font-weight="700" fill="#7A5716" text-anchor="middle">transparency log</text>
+  <text x="965" y="565" font-size="9" fill="#8A6E2F" text-anchor="middle">engine sha256 · container sha256</text>
+  <text x="965" y="580" font-size="9" fill="#8A6E2F" text-anchor="middle">snapshot manifest — rebuildable</text>
+  <text x="965" y="601" font-size="9" fill="#8A6E2F" text-anchor="middle">no silicon signature required</text>
+
+  <!-- publishes + artifacts wires -->
+  <path d="M600,424 V500 H878" stroke="#B07E23" stroke-width="1.8" fill="none" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+  <text x="735" y="492" font-size="9.5" font-weight="600" fill="#B07E23" text-anchor="middle">publishes hashes (reproducible build)</text>
+  <path d="M883,586 H430 V566" stroke="#B07E23" stroke-width="2" fill="none" marker-end="url(#ag)"/>
+  <path d="M430,566 H266" stroke="#B07E23" stroke-width="2" fill="none" marker-end="url(#ag)"/>
+  <text x="600" y="578" font-size="9.5" font-weight="600" fill="#B07E23" text-anchor="middle">artifacts fetched BY HASH — look-alikes refused</text>
+
+  <rect x="60" y="692" width="1130" height="44" rx="10" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.4"/>
+  <text x="625" y="711" font-size="11.5" font-weight="700" fill="#0B4F41" text-anchor="middle">the operator is checked, never trusted: receipts audit after the fact (T1) · a quorum catches cheating in-line (T2) · silicon attests only where the host itself is hostile (T3)</text>
+  <text x="625" y="728" font-size="10" fill="#3E5A52" text-anchor="middle">every wire above is running code — make wire: client → muscle → receipt → judge → VERIFIED, cheater caught</text>
+</svg>

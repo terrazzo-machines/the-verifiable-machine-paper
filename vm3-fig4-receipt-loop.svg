@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 840" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1A2332"/></marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E7C66"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B3402A"/></marker>
+  </defs>
+  <rect width="1250" height="840" fill="#FBFAF7"/>
+  <text x="60" y="52" font-size="12" letter-spacing="3" fill="#0E7C66" font-weight="600">FIGURE 4 · TIER-1 IN MOTION</text>
+  <text x="60" y="88" font-size="28" font-weight="700" fill="#1A2332">The Receipt Loop</text>
+  <text x="60" y="112" font-size="13.5" fill="#5A6472">Generate → receipt → offline replay → compare. Exactly as implemented and CI-tested (tests/wire_test.sh).</text>
+
+  <!-- lane labels -->
+  <text x="60" y="164" font-size="11" letter-spacing="2" fill="#0E7C66" font-weight="600">LANE 1 · HONEST OPERATOR</text>
+  <text x="60" y="486" font-size="11" letter-spacing="2" fill="#B3402A" font-weight="600">LANE 2 · CHEATING OPERATOR</text>
+
+  <!-- lane 1 -->
+  <rect x="60" y="180" width="220" height="120" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.5"/>
+  <text x="80" y="208" font-size="14" font-weight="700" fill="#1A2332">CLIENT</text>
+  <text x="80" y="232" font-size="11.5" fill="#4A5563">sends (prompt, seed)</text>
+  <text x="80" y="252" font-size="11.5" fill="#4A5563">keeps tokens + receipt</text>
+  <text x="80" y="282" font-size="10.5" font-style="italic" fill="#6B7683">holds the prompt — can always audit</text>
+
+  <path d="M280,240 H336" stroke="#1A2332" stroke-width="2.2" fill="none" marker-end="url(#ai)"/>
+
+  <rect x="340" y="180" width="300" height="120" rx="10" fill="#FFFFFF" stroke="#0E7C66" stroke-width="1.8"/>
+  <text x="360" y="208" font-size="14" font-weight="700" fill="#0B4F41">MUSCLE — vm3 --serve</text>
+  <text x="360" y="232" font-size="11.5" fill="#4A5563">model M loaded once, serves many</text>
+  <text x="360" y="252" font-size="11.5" fill="#4A5563">deterministic: (prompt, seed) → tokens</text>
+  <text x="360" y="282" font-size="10.5" font-style="italic" fill="#6B7683">never trusted — only checked</text>
+
+  <path d="M640,240 H696" stroke="#1A2332" stroke-width="2.2" fill="none" marker-end="url(#ai)"/>
+
+  <rect x="700" y="185" width="240" height="110" rx="10" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.6"/>
+  <text x="718" y="211" font-size="13" font-weight="700" fill="#7A5716">RECEIPT</text>
+  <text x="718" y="233" font-size="10.5" fill="#6B532B">engine# E · model# M · seed</text>
+  <text x="718" y="251" font-size="10.5" fill="#6B532B">prompt# p · output# O</text>
+  <text x="718" y="277" font-size="10.5" font-style="italic" fill="#8A6E2F">small, signed-able, self-contained</text>
+
+  <path d="M940,240 H996" stroke="#0E7C66" stroke-width="2.2" fill="none" marker-end="url(#at)"/>
+
+  <rect x="1000" y="170" width="190" height="200" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.5"/>
+  <text x="1016" y="196" font-size="13" font-weight="700" fill="#1A2332">JUDGE (offline)</text>
+  <text x="1016" y="218" font-size="10.8" fill="#3E5A52">hash(engine) = E ✓</text>
+  <text x="1016" y="237" font-size="10.8" fill="#3E5A52">hash(model)  = M ✓</text>
+  <text x="1016" y="256" font-size="10.8" fill="#3E5A52">hash(prompt) = p ✓</text>
+  <text x="1016" y="278" font-size="10.8" fill="#4A5563">replay → output# O′</text>
+  <text x="1016" y="300" font-size="10.8" font-weight="600" fill="#1A2332">compare O′ to O</text>
+  <text x="1016" y="326" font-size="10" font-style="italic" fill="#6B7683">exec, no shell · no vendor ·</text>
+  <text x="1016" y="342" font-size="10" font-style="italic" fill="#6B7683">no permission needed</text>
+
+  <path d="M1095,370 V400" stroke="#0E7C66" stroke-width="2.2" fill="none" marker-end="url(#at)"/>
+  <rect x="1000" y="404" width="190" height="42" rx="21" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.6"/>
+  <text x="1095" y="430" font-size="13" font-weight="700" fill="#0B4F41" text-anchor="middle">VERIFIED · exit 0</text>
+
+  <!-- lane 2 -->
+  <rect x="340" y="502" width="300" height="130" rx="10" fill="#FAECE7" stroke="#B3402A" stroke-width="1.6" stroke-dasharray="6 3"/>
+  <text x="360" y="530" font-size="14" font-weight="700" fill="#8F3320">CHEATING MUSCLE</text>
+  <text x="360" y="554" font-size="11.5" fill="#7A4638">serves tampered M′ (one byte flipped)</text>
+  <text x="360" y="574" font-size="11.5" fill="#7A4638">claims honest M in the receipt</text>
+  <text x="360" y="604" font-size="10.5" font-style="italic" fill="#96543F">tokens differ — the model IS the function</text>
+
+  <path d="M640,562 H696" stroke="#B3402A" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+
+  <rect x="700" y="507" width="240" height="110" rx="10" fill="#FAECE7" stroke="#B3402A" stroke-width="1.4"/>
+  <text x="718" y="533" font-size="13" font-weight="700" fill="#8F3320">FORGED RECEIPT</text>
+  <text x="718" y="555" font-size="10.5" fill="#7A4638">model# M  (claimed, false)</text>
+  <text x="718" y="573" font-size="10.5" fill="#7A4638">output# X  (from M′)</text>
+  <text x="718" y="599" font-size="10.5" font-style="italic" fill="#96543F">the lie is now on the record</text>
+
+  <path d="M940,562 H996" stroke="#B3402A" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+
+  <rect x="1000" y="500" width="190" height="130" rx="10" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.5"/>
+  <text x="1016" y="526" font-size="13" font-weight="700" fill="#1A2332">JUDGE (offline)</text>
+  <text x="1016" y="548" font-size="10.8" fill="#4A5563">replay with real M →</text>
+  <text x="1016" y="567" font-size="10.8" fill="#4A5563">output# O′ = O</text>
+  <text x="1016" y="592" font-size="11.5" font-weight="700" fill="#8F3320">O ≠ X</text>
+  <text x="1016" y="614" font-size="10" font-style="italic" fill="#6B7683">evidence: both hashes printed</text>
+
+  <path d="M1095,630 V660" stroke="#B3402A" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+  <rect x="1000" y="664" width="190" height="42" rx="21" fill="#FAECE7" stroke="#B3402A" stroke-width="1.6"/>
+  <text x="1095" y="690" font-size="13" font-weight="700" fill="#8F3320" text-anchor="middle">DEVIATION · exit 1</text>
+
+  <line x1="60" y1="756" x2="1190" y2="756" stroke="#D9D6CE" stroke-width="1"/>
+  <text x="60" y="786" font-size="12" fill="#3A4450">Deterrence economics: the operator cannot predict which responses get replayed — honesty must be uniform.</text>
+  <text x="60" y="808" font-size="12" fill="#3A4450">What receipts do NOT give: prevention, or privacy from the host (that is possession, T0 — or the TEE module, T3).</text>
+</svg>

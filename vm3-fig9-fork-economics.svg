@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 760" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ag9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B07E23"/></marker>
+    <marker id="ai9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E7C66"/></marker>
+  </defs>
+  <rect width="1250" height="760" fill="#FBFAF7"/>
+  <text x="60" y="52" font-size="12" letter-spacing="3" fill="#0E7C66" font-weight="600">FIGURE 9 · FORK ECONOMICS</text>
+  <text x="60" y="88" font-size="28" font-weight="700" fill="#1A2332">One Copy, Many Machines</text>
+  <text x="60" y="112" font-size="13.5" fill="#5A6472">A warm frontier model is a file. Forks share its pages copy-on-write; each new machine pays only for what it dirties.</text>
+
+  <!-- golden snapshot -->
+  <rect x="60" y="180" width="310" height="110" rx="10" fill="#FFF8EA" stroke="#B07E23" stroke-width="1.6"/>
+  <text x="215" y="208" font-size="13" font-weight="700" fill="#7A5716" text-anchor="middle">golden.snap — one signed file</text>
+  <text x="215" y="230" font-size="11.5" fill="#8A6E2F" text-anchor="middle">guest booted · model resident · caches warm</text>
+  <text x="215" y="248" font-size="11.5" fill="#8A6E2F" text-anchor="middle">reproducible build · sha256 in a transparency log</text>
+  <text x="215" y="272" font-size="10.5" fill="#B07E23" text-anchor="middle">the 40-second load happens once per host — ever</text>
+
+  <!-- verbs chip -->
+  <rect x="60" y="310" width="310" height="30" rx="8" fill="#EFEDE6" stroke="#B7B2A4" stroke-width="1.2"/>
+  <text x="215" y="330" font-size="11" fill="#5A554A" text-anchor="middle">verbs: fork · pause → NVMe · resume · migrate · discard</text>
+
+  <!-- fork arrows -->
+  <path d="M370,205 H470 V180 H520" stroke="#B07E23" stroke-width="2" fill="none" marker-end="url(#ag9)"/>
+  <path d="M370,235 H520" stroke="#B07E23" stroke-width="2" fill="none" marker-end="url(#ag9)"/>
+  <path d="M370,265 H470 V290 H520" stroke="#B07E23" stroke-width="2" fill="none" marker-end="url(#ag9)"/>
+  <text x="445" y="225" font-size="10.5" font-weight="600" fill="#B07E23">fork: milliseconds</text>
+  <text x="445" y="257" font-size="10.5" fill="#B07E23">(restore + lazy fault-in)</text>
+
+  <!-- three clones -->
+  <rect x="520" y="140" width="330" height="86" rx="12" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.6"/>
+  <text x="540" y="164" font-size="12.5" font-weight="700" fill="#1A2332">microVM — agent A</text>
+  <rect x="540" y="174" width="190" height="20" rx="5" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1"/>
+  <text x="635" y="188" font-size="10" fill="#0B4F41" text-anchor="middle">weights: shared, read-only (CoW)</text>
+  <rect x="740" y="174" width="92" height="20" rx="5" fill="#FFF8EA" stroke="#B07E23" stroke-width="1"/>
+  <text x="786" y="188" font-size="10" fill="#7A5716" text-anchor="middle">private: KV ~GBs</text>
+  <text x="540" y="214" font-size="10.5" fill="#5A6472">own kernel · own VM boundary · branchable mid-conversation</text>
+
+  <rect x="520" y="250" width="330" height="86" rx="12" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.6"/>
+  <text x="540" y="274" font-size="12.5" font-weight="700" fill="#1A2332">microVM — agent B</text>
+  <rect x="540" y="284" width="190" height="20" rx="5" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1"/>
+  <text x="635" y="298" font-size="10" fill="#0B4F41" text-anchor="middle">weights: shared, read-only (CoW)</text>
+  <rect x="740" y="284" width="92" height="20" rx="5" fill="#FFF8EA" stroke="#B07E23" stroke-width="1"/>
+  <text x="786" y="298" font-size="10" fill="#7A5716" text-anchor="middle">private: KV ~GBs</text>
+  <text x="540" y="324" font-size="10.5" fill="#5A6472">paused while thinking is done — costs NVMe, not silicon</text>
+
+  <rect x="520" y="360" width="330" height="86" rx="12" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.6"/>
+  <text x="540" y="384" font-size="12.5" font-weight="700" fill="#1A2332">microVM — tenant C</text>
+  <rect x="540" y="394" width="190" height="20" rx="5" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1"/>
+  <text x="635" y="408" font-size="10" fill="#0B4F41" text-anchor="middle">weights: shared, read-only (CoW)</text>
+  <rect x="740" y="394" width="92" height="20" rx="5" fill="#FFF8EA" stroke="#B07E23" stroke-width="1"/>
+  <text x="786" y="408" font-size="10" fill="#7A5716" text-anchor="middle">private: KV ~GBs</text>
+  <text x="540" y="434" font-size="10.5" fill="#5A6472">hardware-grade isolation from A and B — by construction</text>
+
+  <!-- fleet arithmetic -->
+  <rect x="880" y="140" width="330" height="306" rx="12" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.4"/>
+  <text x="900" y="168" font-size="12.5" font-weight="700" fill="#1A2332">the fleet arithmetic (§4.4, §7)</text>
+  <text x="900" y="196" font-size="11.5" fill="#3E5A52">768 GB box · 372 GB model:</text>
+  <text x="900" y="218" font-size="11.5" fill="#3E5A52">weights ×1 (shared) ......... 372 GB</text>
+  <text x="900" y="240" font-size="11.5" fill="#3E5A52">+ N sessions × KV/scratch ... ~GBs each</text>
+  <text x="900" y="262" font-size="11.5" font-weight="600" fill="#0B4F41">⇒ hundreds resident, bounded by KV,</text>
+  <text x="900" y="280" font-size="11.5" font-weight="600" fill="#0B4F41">not by weights</text>
+  <text x="900" y="312" font-size="11.5" fill="#3E5A52">actives share the socket's bandwidth:</text>
+  <text x="900" y="334" font-size="11.5" fill="#3E5A52">a handful decode at interactive speed</text>
+  <text x="900" y="356" font-size="11.5" fill="#3E5A52">while the rest think, wait, or sleep</text>
+  <text x="900" y="388" font-size="11" fill="#5A6472">on GPUs, forking a warm model is an open</text>
+  <text x="900" y="406" font-size="11" fill="#5A6472">research program; here it is an mmap flag</text>
+  <text x="900" y="432" font-size="10.5" font-weight="600" fill="#7A5716">status: Phase 1 — the unbuilt pillar (fabric/)</text>
+
+  <!-- host page cache band -->
+  <rect x="60" y="490" width="1150" height="120" rx="12" fill="#FFFFFF" stroke="#1A2332" stroke-width="1.6"/>
+  <text x="80" y="518" font-size="13" font-weight="700" fill="#1A2332">HOST PAGE CACHE — one physical copy of the weights, serving every clone</text>
+  <rect x="80" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="116" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="152" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="188" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="224" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="260" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="296" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="332" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="368" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="404" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="440" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="476" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="512" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="548" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="584" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="620" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="656" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/><rect x="692" y="536" width="30" height="30" rx="4" fill="#0E7C66" opacity="0.85"/>
+  <text x="748" y="556" font-size="11.5" fill="#3E5A52">← every clone's "weights" strip maps to THESE pages</text>
+  <text x="80" y="592" font-size="11" fill="#5A6472">clone A dirties a page → CoW gives A a private copy of that page only; the shared copy stays pristine for B and C</text>
+
+  <path d="M610,446 V490" stroke="#0E7C66" stroke-width="1.8" fill="none" marker-end="url(#ai9)"/>
+  <path d="M660,336 V370" stroke="#0E7C66" stroke-width="1.2" fill="none" opacity="0.5"/>
+  <path d="M660,226 V260" stroke="#0E7C66" stroke-width="1.2" fill="none" opacity="0.5"/>
+
+  <rect x="60" y="662" width="1150" height="52" rx="10" fill="#E7F4F0" stroke="#0E7C66" stroke-width="1.6"/>
+  <text x="635" y="686" font-size="12.5" font-weight="700" fill="#0B4F41" text-anchor="middle">forking multiplies isolation and tenancy — never bandwidth: the honest fleet equation</text>
+  <text x="635" y="705" font-size="11" fill="#3E5A52" text-anchor="middle">hundreds of resident sessions, a handful simultaneously active, scheduled by the fabric (paper §7) — measured claims arrive with Phase 1</text>
+</svg>
