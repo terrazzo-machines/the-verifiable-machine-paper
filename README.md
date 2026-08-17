@@ -32,7 +32,7 @@ a receipt ([measured.json](measured.json) holds per-number provenance):
 | gpt-oss-20b | 21B / 3.6B | q8 | 2.6 tok/s warm; replay-verified 90 s (`0dc86d`) |
 | Mixtral-8x7B | 47B / 13B | q8 | 3.8 tok/s warm (`84dbdd`) |
 | DeepSeek-V2-Lite | 16B / 2.4B | q8 | 11.7 tok/s warm (`046306`) |
-| Kimi K2.6 | 1.026T / 31.7B | ~640 GB q4 (expected) | **mint in progress at this writing** — in progress, not measured |
+| **Kimi K2.6** | **1.026T / 31.7B** | **602 GB q4 — 9.4× RAM** | **speaks: first words 558 s cold after a 274 s once-per-lifetime identity door (engine daemon); warm ask bit-identical; signed + replay-verified (`149fd339`). The active-params thesis measured: ~8.7 s/token at 1T vs ~19 at 744B** |
 
 Five architecture families are token-exact against their reference
 implementations; determinism is bit-identical across runs, thread counts,
